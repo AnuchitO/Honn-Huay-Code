@@ -75,7 +75,7 @@ func main() {
 
 	h := NewHandler(db)
 
-	r.GET("/skills/:key", GetSkillByKey(db))
+	r.GET("/skills/:key", h.GetSkillByKey)
 
 	r.GET("/skills", func(c *gin.Context) {
 		rows, err := db.Query("SELECT key, name, description, logo, levels, tags FROM skill")
