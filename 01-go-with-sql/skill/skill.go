@@ -35,7 +35,7 @@ func NewHandler(db *sql.DB) handler {
 }
 
 type record struct {
-	
+
 }
 
 func findSkillByKey(db *sql.DB, key string) (Skill, error) {
@@ -43,12 +43,6 @@ func findSkillByKey(db *sql.DB, key string) (Skill, error) {
 	row := db.QueryRow("SELECT key, name, description, logo, levels, tags FROM skill WHERE key = $1", key)
 
 	// scan data from row into a Skill struct
-	var Key string
-	var Name string
-	var Description string
-	var Logo string
-	var Levels []byte
-	var Tags pq.StringArray
 
 	if err := row.Scan(&Key, &Name, &Description, &Logo, &Levels, &Tags); err != nil {
 		return Skill{}, err
