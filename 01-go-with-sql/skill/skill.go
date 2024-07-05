@@ -36,7 +36,7 @@ func NewHandler(db *sql.DB) handler {
 
 func findSkillByKey(db *sql.DB, c *gin.Context, key string) {
 	// query the database for the skill with the given key
-	row := h.db.QueryRow("SELECT key, name, description, logo, levels, tags FROM skill WHERE key = $1", key)
+	row := db.QueryRow("SELECT key, name, description, logo, levels, tags FROM skill WHERE key = $1", key)
 
 	// scan data from row into a Skill struct
 	var skill Skill
