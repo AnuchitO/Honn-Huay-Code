@@ -28,6 +28,7 @@ type Skill struct {
 }
 
 func GetSkillByKey(db *sql.DB) func(c *gin.Context) {
+	return
 
 }
 
