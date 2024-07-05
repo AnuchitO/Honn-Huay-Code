@@ -34,6 +34,10 @@ func NewHandler(db *sql.DB) handler {
 	return handler{db: db}
 }
 
+type storage struct {
+
+}
+
 type record struct {
 	Key         string
 	Name        string
