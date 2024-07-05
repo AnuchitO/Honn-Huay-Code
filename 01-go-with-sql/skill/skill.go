@@ -61,7 +61,12 @@ func (r record) unmarshalLevels() ([]Level, error) {
 }
 
 func decode() {
+	if err := row.Scan(&r.Key, &r.Name, &r.Description, &r.Logo, &r.Levels, &r.Tags); err != nil {
+		return Skill{}, err
+	}
 
+	lvl, err := r.unmarshalLevels()
+	return r.toSkill(lvl), err
 }
 
 func findSkillByKey(db *sql.DB, key string) (Skill, error) {
