@@ -43,10 +43,10 @@ func findSkillByKey(db *sql.DB, key string) (Skill, error) {
 	var Name string
 	var Description string
 	var Logo string
-
-	var skill Skill
 	var levels []byte
 	var tags pq.StringArray
+
+	var skill Skill
 	if err := row.Scan(&Key, &Name, &Description, &Logo, &levels, &tags); err != nil {
 		return Skill{}, err
 	}
