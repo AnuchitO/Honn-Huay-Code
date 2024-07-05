@@ -33,7 +33,7 @@ type handler struct {
 
 func (h handler) GetSkillByKey(c *gin.Context) {
 	key := c.Param("key")
-	row := db.QueryRow("SELECT key, name, description, logo, levels, tags FROM skill WHERE key = $1", key)
+	row := h.db.QueryRow("SELECT key, name, description, logo, levels, tags FROM skill WHERE key = $1", key)
 
 	var skill Skill
 	var levels []byte
