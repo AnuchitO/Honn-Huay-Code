@@ -52,6 +52,7 @@ func toSkill(r record, lvl []Level) {
 		Tags:        r.Tags,
 		Levels:      lvl,
 	}
+	return s
 }
 
 func findSkillByKey(db *sql.DB, key string) (Skill, error) {
