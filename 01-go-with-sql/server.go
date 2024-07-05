@@ -27,6 +27,10 @@ type Skill struct {
 	Tags        []string `json:"tags"`
 }
 
+func GetSkillByKey() {
+
+}
+
 func main() {
 	r := gin.Default()
 	r.Use(gin.Logger())
