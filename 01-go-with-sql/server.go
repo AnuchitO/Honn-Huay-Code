@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"demo/skill"
 	"encoding/json"
 	"net/http"
 	"os"
@@ -39,7 +40,7 @@ func main() {
 	}
 	defer db.Close()
 
-	h := NewHandler(db)
+	h := skill.NewHandler(db)
 
 	r.GET("/skills/:key", h.GetSkillByKey)
 
