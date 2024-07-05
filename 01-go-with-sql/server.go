@@ -55,12 +55,6 @@ func (h handler) GetSkillByKey(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"data": skill})
 }
 
-func GetSkillByKey(db *sql.DB) func(c *gin.Context) {
-	return func(c *gin.Context) {
-
-	}
-}
-
 func main() {
 	r := gin.Default()
 	r.Use(gin.Logger())
