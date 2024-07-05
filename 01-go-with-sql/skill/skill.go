@@ -2,11 +2,9 @@ package skill
 
 import (
 	"database/sql"
-	"encoding/json"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/lib/pq"
 )
 
 type Level struct {
