@@ -44,7 +44,14 @@ type record struct {
 }
 
 func toSkill() {
-
+	s := Skill{
+		Key:         r.Key,
+		Name:        r.Name,
+		Description: r.Description,
+		Logo:        r.Logo,
+		Tags:        r.Tags,
+		Levels:      lvl,
+	}
 }
 
 func findSkillByKey(db *sql.DB, key string) (Skill, error) {
