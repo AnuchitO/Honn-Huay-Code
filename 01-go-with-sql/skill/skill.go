@@ -32,7 +32,7 @@ type handler struct {
 }
 
 func NewHandler(db *sql.DB) handler {
-	return handler{db: db}
+	return handler{db: db, storage: storage{db: db}}
 }
 
 type storage struct {
