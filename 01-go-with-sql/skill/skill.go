@@ -35,12 +35,12 @@ func NewHandler(db *sql.DB) handler {
 }
 
 type record struct {
-	var Key string
-	var Name string
-	var Description string
-	var Logo string
-	var Levels []byte
-	var Tags pq.StringArray
+	Key string
+	Name string
+	Description string
+	Logo string
+	Levels []byte
+	Tags pq.StringArray
 }
 
 func findSkillByKey(db *sql.DB, key string) (Skill, error) {
