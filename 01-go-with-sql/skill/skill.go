@@ -27,12 +27,11 @@ type Skill struct {
 }
 
 type handler struct {
-	db      *sql.DB
 	storage storage
 }
 
 func NewHandler(db *sql.DB) handler {
-	return handler{db: db, storage: storage{db: db}}
+	return handler{storage: storage{db: db}}
 }
 
 type storage struct {
