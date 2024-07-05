@@ -15,6 +15,10 @@ type storage struct {
 	db *sql.DB
 }
 
+func NewStorage(db *sql.DB) storage {
+	return storage{db: db}
+}
+
 type record struct {
 	Key         string
 	Name        string
