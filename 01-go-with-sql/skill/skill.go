@@ -54,7 +54,7 @@ func findSkillByKey(db *sql.DB, key string) (Skill, error) {
 		return Skill{}, err
 	}
 
-	skill := Skill{
+	s := Skill{
 		Key:         Key,
 		Name:        Name,
 		Description: Description,
@@ -63,7 +63,7 @@ func findSkillByKey(db *sql.DB, key string) (Skill, error) {
 		Levels:      lvl,
 	}
 
-	return skill, nil
+	return s, nil
 }
 
 func (h handler) GetSkillByKey(c *gin.Context) {
