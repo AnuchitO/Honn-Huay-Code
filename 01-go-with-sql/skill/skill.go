@@ -74,7 +74,7 @@ func (r record) decode(row *sql.Row) (Skill, error) {
 	return r.toSkill(lvl), err
 }
 
-func findSkillByKey(db *sql.DB, key string) (Skill, error) {
+func (s storage) findSkillByKey(db *sql.DB, key string) (Skill, error) {
 	row := db.QueryRow("SELECT key, name, description, logo, levels, tags FROM skill WHERE key = $1", key)
 	r := record{}
 	return r.decode(row)
