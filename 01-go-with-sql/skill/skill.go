@@ -60,4 +60,5 @@ func (h handler) GetSkillByKey(c *gin.Context) {
 	// get the key from the URL path param
 	key := c.Param("key")
 
+	findSkillByKey(h, c, key)
 }
