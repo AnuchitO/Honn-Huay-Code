@@ -76,12 +76,6 @@ func findSkillByKey(db *sql.DB, key string) (Skill, error) {
 	// scan data from row into a Skill struct
 	r := record{}
 	return decode(r, row)
-	// if err := row.Scan(&r.Key, &r.Name, &r.Description, &r.Logo, &r.Levels, &r.Tags); err != nil {
-	// 	return Skill{}, err
-	// }
-
-	// lvl, err := r.unmarshalLevels()
-	// return r.toSkill(lvl), err
 }
 
 func (h handler) GetSkillByKey(c *gin.Context) {
