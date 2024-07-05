@@ -1,7 +1,6 @@
 package skill
 
 import (
-	"database/sql"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -28,8 +27,8 @@ type handler struct {
 	storage Storage
 }
 
-func NewHandler(db *sql.DB) handler {
-	return handler{storage: storage{db: db}}
+func NewHandler(storage Storage) handler {
+	return handler{storage}
 }
 
 func (h handler) GetSkillByKey(c *gin.Context) {
