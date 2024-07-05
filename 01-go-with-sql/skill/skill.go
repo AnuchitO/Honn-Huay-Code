@@ -57,7 +57,7 @@ func (r record) toSkill(lvl []Level) Skill {
 func (r record) unmarshalLevels() ([]Level, error) {
 	lvl := []Level{}
 	err := json.Unmarshal(r.Levels, &lvl)
-	return lvl, nil
+	return lvl, err
 }
 
 func findSkillByKey(db *sql.DB, key string) (Skill, error) {
