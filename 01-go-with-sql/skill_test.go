@@ -67,4 +67,32 @@ func TestSkillHandler(t *testing.T) {
 			t.Errorf("got %s, want %s", got, want)
 		}
 	})
+
+	t.Run("GetSkillByKey: should response error when levels json unmarshal failed", func(t *testing.T) {
+		db, _ := sql.Open("sqlite", "file:TestSkillHandler?mode=memory&cache=shared")
+		defer db.Close()
+		gosql := `INSERT INTO skill (key, name, description, levels, tags)
+		VALUES (
+			'go', 'Go', 'Go is an open source programming...',
+			'invalid json levels',
+			'{go,golang}'
+		);`
+
+		db.Exec(table)
+		db.Exec(gosql)
+
+		rec := httptest.NewRecorder()
+		c, _ := gin.CreateTestContext(rec)
+		c.Params = append(c.Params, gin.Param{Key: "key", Value: "go"})
+
+		h := NewHandler(db)
+		h.GetSkillByKey(c)
+
+		want := `{"error":"invalid character 'i' looking for beginning of value"}`
+		got := rec.Body.String()
+
+		if got != want {
+			t.Errorf("got %s, want %s", got, want)
+		}
+	})
 }
