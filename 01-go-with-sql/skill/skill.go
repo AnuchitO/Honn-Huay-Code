@@ -60,7 +60,7 @@ func (r record) unmarshalLevels() ([]Level, error) {
 	return lvl, err
 }
 
-func decode(r record) {
+func decode(r record, row *sql.Row) {
 	if err := row.Scan(&r.Key, &r.Name, &r.Description, &r.Logo, &r.Levels, &r.Tags); err != nil {
 		return Skill{}, err
 	}
