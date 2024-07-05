@@ -62,4 +62,7 @@ func (h handler) GetSkillByKey(c *gin.Context) {
 	key := c.Param("key")
 
 	skill, err := findSkillByKey(h.db, c, key)
+	if err != nil {
+
+	}
 }
