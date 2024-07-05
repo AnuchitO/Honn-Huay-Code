@@ -71,9 +71,9 @@ func findSkillByKey(db *sql.DB, key string) (Skill, error) {
 	}
 
 	lvl, err := r.unmarshalLevels()
-	if err != nil {
-		return Skill{}, err
-	}
+	// if err != nil {
+	// 	return Skill{}, err
+	// }
 
 	return r.toSkill(lvl), nil
 }
