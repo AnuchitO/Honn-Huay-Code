@@ -7,6 +7,10 @@ import (
 	"github.com/lib/pq"
 )
 
+type Storage interface {
+	FindSkillByKey(key string) (Skill, error)
+}
+
 type storage struct {
 	db *sql.DB
 }
