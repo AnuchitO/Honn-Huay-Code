@@ -46,4 +46,25 @@ func TestSkillHandler(t *testing.T) {
 			t.Errorf("got %s, want %s", got, want)
 		}
 	})
+
+	t.Run("GetSkillByKey: should response error when skill not found", func(t *testing.T) {
+		db, _ := sql.Open("sqlite", "file:TestSkillHandler?mode=memory&cache=shared")
+		defer db.Close()
+
+		db.Exec(table)
+
+		rec := httptest.NewRecorder()
+		c, _ := gin.CreateTestContext(rec)
+		c.Params = append(c.Params, gin.Param{Key: "key", Value: "go"})
+
+		h := NewHandler(db)
+		h.GetSkillByKey(c)
+
+		want := `{"error":"sql: no rows in result set"}`
+		got := rec.Body.String()
+
+		if got != want {
+			t.Errorf("got %s, want %s", got, want)
+		}
+	})
 }
