@@ -35,9 +35,13 @@ func NewHandler(db *sql.DB) handler {
 }
 
 func (h handler) GetSkillByKey(c *gin.Context) {
+	// get the key from the URL path param
 	key := c.Param("key")
+
+	// query the database for the skill with the given key
 	row := h.db.QueryRow("SELECT key, name, description, logo, levels, tags FROM skill WHERE key = $1", key)
 
+	// scan data from row into a Skill struct
 	var skill Skill
 	var levels []byte
 	var tags pq.StringArray
@@ -51,5 +55,6 @@ func (h handler) GetSkillByKey(c *gin.Context) {
 	}
 	skill.Tags = tags
 
+	// response the skill as JSON
 	c.JSON(http.StatusOK, gin.H{"data": skill})
 }
