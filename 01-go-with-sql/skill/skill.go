@@ -53,7 +53,8 @@ func findSkillByKey(db *sql.DB, c *gin.Context, key string) (Skill, error) {
 	skill.Tags = tags
 
 	// response the skill as JSON
-	c.JSON(http.StatusOK, gin.H{"data": skill}) // should be in handler logic
+	// c.JSON(http.StatusOK, gin.H{"data": skill}) // should be in handler logic
+	return skill, nil
 }
 
 func (h handler) GetSkillByKey(c *gin.Context) {
