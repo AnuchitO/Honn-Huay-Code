@@ -53,6 +53,11 @@ func findSkillByKey(db *sql.DB, key string) (Skill, error) {
 	if err := json.Unmarshal(levels, &skill.Levels); err != nil {
 		return Skill{}, err
 	}
+
+	skill.Key = Key
+	skill.Name = Name
+	skill.Description = Description
+	skill.Logo = Logo
 	skill.Tags = tags
 
 	return skill, nil
