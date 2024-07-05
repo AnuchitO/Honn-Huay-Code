@@ -54,7 +54,9 @@ func findSkillByKey(db *sql.DB, key string) (Skill, error) {
 		return Skill{}, err
 	}
 
-	var skill Skill
+	skill := Skill{
+		
+	}
 	skill.Key = Key
 	skill.Name = Name
 	skill.Description = Description
