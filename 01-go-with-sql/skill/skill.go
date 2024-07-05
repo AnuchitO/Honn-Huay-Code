@@ -58,11 +58,11 @@ func findSkillByKey(db *sql.DB, key string) (Skill, error) {
 	}
 
 	s := Skill{
-		Key:         Key,
-		Name:        Name,
-		Description: Description,
-		Logo:        Logo,
-		Tags:        Tags,
+		Key:         r.Key,
+		Name:        r.Name,
+		Description: r.Description,
+		Logo:        r.Logo,
+		Tags:        r.Tags,
 		Levels:      lvl,
 	}
 
