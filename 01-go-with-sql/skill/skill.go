@@ -70,7 +70,6 @@ func decode(r record, row *sql.Row) (Skill, error) {
 }
 
 func findSkillByKey(db *sql.DB, key string) (Skill, error) {
-	// query the database for the skill with the given key
 	row := db.QueryRow("SELECT key, name, description, logo, levels, tags FROM skill WHERE key = $1", key)
 	r := record{}
 	return decode(r, row)
