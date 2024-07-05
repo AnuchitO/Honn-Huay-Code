@@ -31,6 +31,10 @@ type handler struct {
 	db *sql.DB
 }
 
+func (h handler) GetSkillByKey(c *gin.Context) {
+
+}
+
 func GetSkillByKey(db *sql.DB) func(c *gin.Context) {
 	return func(c *gin.Context) {
 		key := c.Param("key")
