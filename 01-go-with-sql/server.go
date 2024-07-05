@@ -27,7 +27,7 @@ type Skill struct {
 	Tags        []string `json:"tags"`
 }
 
-func GetSkillByKey() {
+func GetSkillByKey(db *sql.DB) {
 
 }
 
