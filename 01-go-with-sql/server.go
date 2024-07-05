@@ -31,6 +31,10 @@ type handler struct {
 	db *sql.DB
 }
 
+func NewHandler(db *sql.DB) handler {
+	return handler{db: db}
+}
+
 func (h handler) GetSkillByKey(c *gin.Context) {
 	key := c.Param("key")
 	row := h.db.QueryRow("SELECT key, name, description, logo, levels, tags FROM skill WHERE key = $1", key)
