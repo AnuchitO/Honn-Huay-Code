@@ -39,6 +39,11 @@ func findSkillByKey(db *sql.DB, key string) (Skill, error) {
 	row := db.QueryRow("SELECT key, name, description, logo, levels, tags FROM skill WHERE key = $1", key)
 
 	// scan data from row into a Skill struct
+	var Key string
+	var Name string
+	var Description string
+	var Logo string
+
 	var skill Skill
 	var levels []byte
 	var tags pq.StringArray
