@@ -73,6 +73,8 @@ func main() {
 	}
 	defer db.Close()
 
+	h := NewHandler(db)
+
 	r.GET("/skills/:key", GetSkillByKey(db))
 
 	r.GET("/skills", func(c *gin.Context) {
