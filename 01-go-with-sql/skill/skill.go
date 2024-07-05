@@ -54,7 +54,7 @@ func toSkill(r record, lvl []Level) Skill {
 	}
 }
 
-func unmarshalLevels(r record) ([]Level, error) {
+func (r record) unmarshalLevels() ([]Level, error) {
 	lvl := []Level{}
 	if err := json.Unmarshal(r.Levels, &lvl); err != nil {
 		return []Level{}, err
