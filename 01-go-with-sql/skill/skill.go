@@ -63,6 +63,7 @@ func (h handler) GetSkillByKey(c *gin.Context) {
 
 	skill, err := findSkillByKey(h.db, c, key)
 	if err != nil {
-
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
 	}
 }
