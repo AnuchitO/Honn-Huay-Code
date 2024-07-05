@@ -35,7 +35,7 @@ func NewHandler(db *sql.DB) handler {
 }
 
 type storage struct {
-
+	db *sql.DB
 }
 
 type record struct {
