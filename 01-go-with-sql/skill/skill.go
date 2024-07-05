@@ -25,7 +25,7 @@ type Skill struct {
 }
 
 type handler struct {
-	storage storage
+	storage Storage
 }
 
 func NewHandler(db *sql.DB) handler {
