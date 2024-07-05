@@ -27,6 +27,10 @@ type Skill struct {
 	Tags        []string `json:"tags"`
 }
 
+type handler struct {
+
+}
+
 func GetSkillByKey(db *sql.DB) func(c *gin.Context) {
 	return func(c *gin.Context) {
 		key := c.Param("key")
