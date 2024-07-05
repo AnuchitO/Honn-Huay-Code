@@ -43,8 +43,8 @@ func findSkillByKey(db *sql.DB, c *gin.Context, key string) (Skill, error) {
 	var levels []byte
 	var tags pq.StringArray
 	if err := row.Scan(&skill.Key, &skill.Name, &skill.Description, &skill.Logo, &levels, &tags); err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()}) // should be in handler logic
-		return
+		// c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()}) // should be in handler logic
+		return Skill{}, err
 	}
 	if err := json.Unmarshal(levels, &skill.Levels); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()}) // should be in handler logic
