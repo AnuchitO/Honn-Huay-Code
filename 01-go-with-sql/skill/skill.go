@@ -79,7 +79,7 @@ func findSkillByKey(db *sql.DB, key string) (Skill, error) {
 
 	s := r.toSkill(lvl)
 
-	return s, nil
+	return r.toSkill(lvl), nil
 }
 
 func (h handler) GetSkillByKey(c *gin.Context) {
