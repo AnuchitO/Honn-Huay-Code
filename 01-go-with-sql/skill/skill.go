@@ -46,7 +46,6 @@ func findSkillByKey(db *sql.DB, c *gin.Context, key string) (Skill, error) {
 		return Skill{}, err
 	}
 	if err := json.Unmarshal(levels, &skill.Levels); err != nil {
-		// c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()}) // should be in handler logic
 		return Skill{}, err
 	}
 	skill.Tags = tags
