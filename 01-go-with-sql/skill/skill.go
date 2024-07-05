@@ -34,6 +34,10 @@ func NewHandler(db *sql.DB) handler {
 	return handler{db: db}
 }
 
+func findSkillByKey() {
+
+}
+
 func (h handler) GetSkillByKey(c *gin.Context) {
 	// get the key from the URL path param
 	key := c.Param("key")
