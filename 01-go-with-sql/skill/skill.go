@@ -43,7 +43,7 @@ type record struct {
 	Tags        pq.StringArray
 }
 
-func toSkill(r record) {
+func toSkill(r record, lvl []Level) {
 	s := Skill{
 		Key:         r.Key,
 		Name:        r.Name,
