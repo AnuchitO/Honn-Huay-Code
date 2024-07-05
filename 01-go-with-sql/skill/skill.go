@@ -43,14 +43,14 @@ func findSkillByKey(db *sql.DB, key string) (Skill, error) {
 	var Name string
 	var Description string
 	var Logo string
-	var levels []byte
+	var Levels []byte
 	var tags pq.StringArray
 
 	var skill Skill
-	if err := row.Scan(&Key, &Name, &Description, &Logo, &levels, &tags); err != nil {
+	if err := row.Scan(&Key, &Name, &Description, &Logo, &Levels, &tags); err != nil {
 		return Skill{}, err
 	}
-	if err := json.Unmarshal(levels, &skill.Levels); err != nil {
+	if err := json.Unmarshal(Levels, &skill.Levels); err != nil {
 		return Skill{}, err
 	}
 
