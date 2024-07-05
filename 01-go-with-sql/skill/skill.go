@@ -77,7 +77,7 @@ func findSkillByKey(db *sql.DB, key string) (Skill, error) {
 		return Skill{}, err
 	}
 
-	s := toSkill(r, lvl)
+	s := r.toSkill(lvl)
 
 	return s, nil
 }
