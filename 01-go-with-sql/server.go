@@ -28,7 +28,7 @@ type Skill struct {
 }
 
 type handler struct {
-
+	db *sql.DB
 }
 
 func GetSkillByKey(db *sql.DB) func(c *gin.Context) {
