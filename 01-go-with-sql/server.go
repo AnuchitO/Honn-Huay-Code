@@ -28,8 +28,25 @@ type Skill struct {
 }
 
 func GetSkillByKey(db *sql.DB) func(c *gin.Context) {
-	return
+	return func (c *gin.Context) {
+		key := c.Param("key")
+		row := db.QueryRow("SELECT key, name, description, logo, levels, tags FROM skill WHERE key = $1", key)
 
+		var skill Skill
+		var levels []byte
+		var tags pq.StringArray
+		if err := row.Scan(&skill.Key, &skill.Name, &skill.Description, &skill.Logo, &levels, &tags); err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			return
+		}
+		if err := json.Unmarshal(levels, &skill.Levels); err != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+			return
+		}
+		skill.Tags = tags
+
+		c.JSON(http.StatusOK, gin.H{"data": skill})
+	}
 }
 
 func main() {
