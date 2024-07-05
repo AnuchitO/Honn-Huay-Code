@@ -9,6 +9,23 @@ import (
 	"github.com/lib/pq"
 )
 
+type Level struct {
+	Key          string   `json:"key"`
+	Name         string   `json:"name"`
+	Brief        string   `json:"brief"`
+	Descriptions []string `json:"descriptions"`
+	Level        int      `json:"level"`
+}
+
+type Skill struct {
+	Key         string   `json:"key"`
+	Name        string   `json:"name"`
+	Description string   `json:"description"`
+	Logo        string   `json:"logo"`
+	Levels      []Level  `json:"levels"`
+	Tags        []string `json:"tags"`
+}
+
 type handler struct {
 	db *sql.DB
 }
