@@ -27,7 +27,11 @@ type Skill struct {
 	Tags        []string `json:"tags"`
 }
 
-func GetSkillByKey(c *gin.Context) {
+func GetSkillByKey() {
+
+}
+
+func(c *gin.Context) {
 	key := c.Param("key")
 	row := db.QueryRow("SELECT key, name, description, logo, levels, tags FROM skill WHERE key = $1", key)
 
