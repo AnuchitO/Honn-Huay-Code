@@ -36,7 +36,7 @@ func (h handler) GetSkillByKey(c *gin.Context) {
 	// get the key from the URL path param
 	key := c.Param("key")
 
-	skill, err := h.storage.findSkillByKey(key)
+	skill, err := h.storage.FindSkillByKey(key)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
