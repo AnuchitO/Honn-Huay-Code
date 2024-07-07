@@ -49,7 +49,7 @@ type scaner interface {
 	Scan(dest ...interface{}) error
 }
 
-func (r record) decode(row *sql.Row) (Skill, error) {
+func (r record) decode(row scaner) (Skill, error) {
 	if err := row.Scan(&r.Key, &r.Name, &r.Description, &r.Logo, &r.Levels, &r.Tags); err != nil {
 		return Skill{}, err
 	}
