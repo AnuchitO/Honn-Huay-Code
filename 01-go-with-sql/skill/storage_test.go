@@ -43,4 +43,12 @@ func TestRecord(t *testing.T) {
 		assert.Equal(t, want, got)
 		assert.Nil(t, err)
 	})
+
+	t.Run("unmarshalLevels: should return error when unmarshal failed", func(t *testing.T) {
+		r := record{Levels: []byte(`invalid json`)}
+
+		_, err := r.unmarshalLevels()
+
+		assert.NotNil(t, err)
+	})
 }
