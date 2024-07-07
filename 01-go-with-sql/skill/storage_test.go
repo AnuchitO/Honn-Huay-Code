@@ -53,6 +53,27 @@ func TestRecord(t *testing.T) {
 		assert.NotNil(t, err)
 	})
 
+	t.Run("decode: should return Skill model", func(t *testing.T) {
+		r := record{
+			Key:         "go",
+			Name:        "Go",
+			Description: "Gopher",
+			Logo:        "logo",
+			Levels:      []byte(`[{"name":"name","descriptions":["description"]}]`),
+			Tags:        pq.StringArray{"tag1", "tag2"},
+		}
+		fake := &fakeRow{row: r}
+
+		got, err := r.decode(fake)
+
+		want := Skill{
+			Key: "go", Name: "Go", Description: "Gopher", Logo: "logo",
+			Levels: []Level{{Name: "name", Descriptions: []string{"description"}}},
+			Tags:   pq.StringArray{"tag1", "tag2"},
+		}
+		assert.Equal(t, want, got)
+		assert.Nil(t, err)
+	})
 }
 
 type fakeRow struct {
