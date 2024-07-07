@@ -1,6 +1,7 @@
 package skill
 
 import (
+	"bytes"
 	"testing"
 
 	"github.com/lib/pq"
@@ -51,4 +52,19 @@ func TestRecord(t *testing.T) {
 
 		assert.NotNil(t, err)
 	})
+
+}
+
+type fakeRow struct {
+	row record
+}
+
+func (m *fakeRow) Scan(dest ...interface{}) error {
+	*(dest[0].(*string)) = m.row.Key
+	*(dest[1].(*string)) = m.row.Name
+	*(dest[2].(*string)) = m.row.Description
+	*(dest[3].(*string)) = m.row.Logo
+	*(dest[4].(*[]byte)) = bytes.Clone(m.row.Levels)
+	*(dest[5].(*pq.StringArray)) = m.row.Tags
+	return nil
 }
