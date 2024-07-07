@@ -31,4 +31,16 @@ func TestRecord(t *testing.T) {
 		}
 		assert.Equal(t, want, got)
 	})
+
+	t.Run("unmarshalLevels: should be able to unmarshal levels", func(t *testing.T) {
+		r := record{
+			Levels: []byte(`[{"name":"name","descriptions":["description"]}]`),
+		}
+
+		got, err := r.unmarshalLevels()
+
+		want := []Level{{Name: "name", Descriptions: []string{"description"}}}
+		assert.Equal(t, want, got)
+		assert.Nil(t, err)
+	})
 }
